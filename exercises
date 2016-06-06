@@ -1,0 +1,34 @@
+The simulator provides a playground for experimenting with data link
+protocols.  Here are some suggestions for possible student projects using
+the simulator.  Most of these will require drawing many graphs, so it
+would be helpful if some tools for turning numbers into graphs are available
+locally.  The UNIX grap frontend for troff is one such tool, but others exist.
+
+ 1. For one or more selected protocols, make a study of protocol performance,
+    measured in payloads delivered per second, as a function of the checksum
+    error rate, lost packet rate, and timeout interval.  For example, provide
+    graphs showing payloads/sec as a function of timeout interval, for
+    various error rates.  What can you conclude?
+
+ 2. Compare the performance of protocols 5 and 6 in detail with respect to
+    payloads/sec and number of retransmissions for a wide variety of
+    parameters.  Under which circumstances is protocol 5 better? protocol 6?
+
+ 3. The function pick_event() has built-in priorities for events. For example,
+    for protocol 5, frame arrivals go before timeouts.  Experiment with
+    changing these priorities (by reordering the statements in pick_event().
+    What conclusions can you draw?
+
+ 4. Investigate the number of retransmitted frames as a function of the
+    timeout interval for various parameters?  Can you determine what the
+    optimum setting should be?
+
+ 5. Presently, the simulator advances time one tick at a time.  If both
+    processes are blocked on distant timeouts, this process goes slowly.
+    Change the simulator to advance time more quickly when both processes
+    are blocked on the clock.
+
+ 6. In the simulator at present, packet delivery is essentially instanteous.
+    Change it so that delivery times are variable with a user-settable
+    variance.  How does the variance affect protocol performance?
+

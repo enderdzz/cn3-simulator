@@ -1,0 +1,45 @@
+This package simulates the protocols of Chapter 3 of "Computer Networks 3/e"
+by Andrew S. Tanenbaum, published by Prentice Hall PTR, 1996.  It was written
+by Andrew S. Tanenbaum and may be freely distributed.
+
+The simulator is compiled by just typing 'make'.  If you want to use gcc
+instead of cc, change the line
+
+CC=cc
+
+to
+
+CC=gcc
+
+in Makefile.
+
+It is executed by giving a command line containing the simulation parameters.
+The command line has six decimal parameters, as follows:
+
+	sim  protocol  events  timeout  pct_loss  pct_cksum  debug_flags
+
+where
+
+        protocol tells which protocol to run, e.g. 5
+        events tells how long to run the simulation
+        timeout gives the timeout interval in ticks
+        pct_loss gives the percentage of frames that are lost (0-99)
+        pct_cksum gives the percentage of arriving frames that are bad (0-99)
+        debug_flags enables various tracing flags:
+		1	 frames sent 
+		2	 frames received 
+		4	 timeouts 
+		8	 periodic printout for use with long runs 
+
+For example
+
+	sim 6 100000 40 20 10 3
+
+will run protocol 6 for 100,000 events with a timeout interval of 40 ticks,
+a 20% packet loss rate, a 10% rate of checksum errors (of the 80% that get
+through), and will print a line for each frame sent or received.  Because
+each peer process is represented by a different UNIX process, there is
+(quasi)parallel processing going on.  This means that successive runs will
+not give the same results due to timing fluctuations.
+
+A set of possible student exercises is given in the file exercises.
